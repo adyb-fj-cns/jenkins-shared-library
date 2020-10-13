@@ -1,7 +1,7 @@
 //vars//hello.groovy
 
-def call(String message){
-    print message
+def call(String message = 'World'){
+    echo "Hello ${message}"
 }
 
 def info(message) {
