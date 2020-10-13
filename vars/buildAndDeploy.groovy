@@ -8,14 +8,10 @@ def call(body){
 
     stages {
         stage("build"){
-            steps {
-                echo "Building"
-            }
+            echo "Building"
         }
         stage("deploy"){
-            steps {
-                echo "Deploying"
-            }
+            echo "Deploying"
         }
     }
 }
