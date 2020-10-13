@@ -4,6 +4,10 @@ package com.fujitsu.adybfjcns;
 
 class Say {
     def say(String message = 'World') {
-        return message
+        return "Saying ${message}"
+    }
+
+    def whisper(String message = 'World') {
+        return "Whispering ${message}"
     }
 }
