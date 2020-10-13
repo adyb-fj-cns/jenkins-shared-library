@@ -1,4 +1,4 @@
-package com.fujitsu.adyfjcns;
+package com.fujitsu.adybfjcns;
 
 def say(String message) {
     sh '''
