@@ -1,0 +1,9 @@
+*doSomethingFancy* is a custom step which prints a few message
+
+Example:
+```
+//Jenkinsfile
+node{
+	doSomethingFancy name:'Ady', ref: 'Buxton'
+}
+```

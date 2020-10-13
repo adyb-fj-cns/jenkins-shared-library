@@ -2,7 +2,7 @@
 
 def call(Map config){
     node {
-        sh "name: ${config.name}"
-        sh "ref: ${config.ref}"
+        sh "echo ${config.name}"
+        sh "echo ${config.ref}"
     }
 }
