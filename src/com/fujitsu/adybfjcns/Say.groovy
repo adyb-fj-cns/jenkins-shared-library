@@ -2,8 +2,8 @@
 
 package com.fujitsu.adybfjcns;
 
-def say(String message = 'World') {
-    echo "Hello ${message}"
+class Say {
+    def say(String message = 'World') {
+        echo "Hello ${message}"
+    }
 }
-
-return this
