@@ -4,6 +4,6 @@ package com.fujitsu.adybfjcns;
 
 class Say {
     def say(String message = 'World') {
-        echo "Hello ${message}"
+        return message
     }
 }
