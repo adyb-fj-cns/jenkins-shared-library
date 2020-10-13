@@ -6,12 +6,10 @@ def call(body){
 	body.delegate = config
     body()
 
-    stages {
-        stage("build"){
-            echo "Building"
-        }
-        stage("deploy"){
-            echo "Deploying"
-        }
+    stage("build"){
+        echo "Building"
+    }
+    stage("deploy"){
+        echo "Deploying"
     }
 }
