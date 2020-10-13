@@ -1,0 +1,10 @@
+*hello* is a custom step which prints a message
+
+Example:
+```
+//Jenkinsfile
+node{
+	hello "Some text message";
+	hello("Some text message");
+}
+```
