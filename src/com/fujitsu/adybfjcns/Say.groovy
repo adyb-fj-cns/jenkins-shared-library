@@ -1,7 +1,9 @@
+// src/com/fujitsu/adybfjcns/Say.groovy
+
 package com.fujitsu.adybfjcns;
 
 def say(String message) {
-    sh '''
-        echo "Saying ${message}"'
-    '''
+    echo message
 }
+
+return this
