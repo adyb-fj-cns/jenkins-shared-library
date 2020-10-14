@@ -13,18 +13,18 @@ def call(body){
             usernameVariable: 'GRAFANA_USERNAME', 
             passwordVariable: 'GRAFANA_PASSWORD')]) {
 
-            sh "echo ${config.credentialsId}"
-            sh "echo ${config.grafanaUrl}"
+            sh "echo ${config.grafanaUrl} > grafanaUrl"
+            sh "echo ${config.sourceDir} > /sourceDir"
 
             sh '''
-                SCRIPT_PATH="dashboards-jsonnet"; \
+                SCRIPT_PATH="$(cat /sourceDir)"; \
                 for file in $SCRIPT_PATH/*.json; \
                 do \
                 DASHBOARD=$(jq . $file); \
                 curl -X POST \
                     -H 'Content-Type: application/json' \
                     -d "{\\\"dashboard\\\": $DASHBOARD, \\\"overwrite\\\": true}" \
-                    "http://$GRAFANA_USERNAME:$GRAFANA_PASSWORD@grafana-ui:3000/api/dashboards/db";
+                    "http://$GRAFANA_USERNAME:$GRAFANA_PASSWORD@$(cat /grafanaUrl)/api/dashboards/db";
                 done
                 '''
                 
