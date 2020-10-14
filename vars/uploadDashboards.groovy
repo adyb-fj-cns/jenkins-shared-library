@@ -13,11 +13,8 @@ def call(body){
             usernameVariable: 'GRAFANA_USERNAME', 
             passwordVariable: 'GRAFANA_PASSWORD')]) {
 
-            sh "echo ${config.grafanaUrl} > grafanaUrl"
+            sh "echo ${config.grafanaUrl} > /grafanaUrl"
             sh "echo ${config.sourceDir} > /sourceDir"
-
-            sh "echo $(cat /grafanaUrl)"
-
             sh '''
                 SCRIPT_PATH="$(cat /sourceDir)"; \
                 GRAFANA_URL="$(cat /grafanaUrl)"; \
