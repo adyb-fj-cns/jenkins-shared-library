@@ -8,9 +8,8 @@ def call(body){
 
     stage('convert'){
         container('grafonnet') {
-            sh "echo ${config.sourceDir}"
+            sh 'echo $${config.sourceDir}'
             sh '''
-                echo ${config.sourceDir}; \
                 SCRIPT_PATH="dashboards-jsonnet"; \
                 for file in $SCRIPT_PATH/*.jsonnet; \
                 do \
