@@ -16,15 +16,18 @@ def call(body){
             sh "echo ${config.grafanaUrl} > grafanaUrl"
             sh "echo ${config.sourceDir} > /sourceDir"
 
+            sh "echo $(cat /grafanaUrl)"
+
             sh '''
                 SCRIPT_PATH="$(cat /sourceDir)"; \
+                GRAFANA_URL="$(cat /grafanaUrl)"; \
                 for file in $SCRIPT_PATH/*.json; \
                 do \
                 DASHBOARD=$(jq . $file); \
                 curl -X POST \
                     -H 'Content-Type: application/json' \
                     -d "{\\\"dashboard\\\": $DASHBOARD, \\\"overwrite\\\": true}" \
-                    "http://$GRAFANA_USERNAME:$GRAFANA_PASSWORD@$(cat /grafanaUrl)/api/dashboards/db";
+                    "http://$GRAFANA_USERNAME:$GRAFANA_PASSWORD@$GRAFANA_URL/api/dashboards/db";
                 done
                 '''
                 
