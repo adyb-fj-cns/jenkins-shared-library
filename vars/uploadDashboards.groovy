@@ -9,9 +9,12 @@ def call(body){
     stage('upload'){
         container('grafonnet') {
             withCredentials([usernamePassword(
-            credentialsId: '${config.credentialsId}', 
+            credentialsId: "${config.credentialsId}", 
             usernameVariable: 'GRAFANA_USERNAME', 
             passwordVariable: 'GRAFANA_PASSWORD')]) {
+
+            sh "echo ${config.credentialsId}"
+            sh "echo ${config.grafanaUrl}"
 
             sh '''
                 SCRIPT_PATH="dashboards-jsonnet"; \
@@ -21,7 +24,7 @@ def call(body){
                 curl -X POST \
                     -H 'Content-Type: application/json' \
                     -d "{\\\"dashboard\\\": $DASHBOARD, \\\"overwrite\\\": true}" \
-                    "http://$GRAFANA_USERNAME:$GRAFANA_PASSWORD@${config.grafanaUrl}/api/dashboards/db";
+                    "http://$GRAFANA_USERNAME:$GRAFANA_PASSWORD@grafana-ui:3000/api/dashboards/db";
                 done
                 '''
                 
