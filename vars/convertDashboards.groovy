@@ -7,7 +7,7 @@ def call(body){
     body()
 
     stage('convert'){
-        container('grafonnet') {
+        container("${config.containerName}") {
             sh "echo ${config.sourceDir} > /sourceDir"
             sh '''
                 SCRIPT_PATH="$(cat /sourceDir)"; \

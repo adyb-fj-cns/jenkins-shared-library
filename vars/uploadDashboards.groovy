@@ -7,7 +7,7 @@ def call(body){
     body()
 
     stage('upload'){
-        container('grafonnet') {
+        container("${config.containerName}") {
             withCredentials([usernamePassword(
             credentialsId: "${config.credentialsId}", 
             usernameVariable: 'GRAFANA_USERNAME', 
