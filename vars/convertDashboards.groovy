@@ -6,7 +6,7 @@ def call(body){
 	body.delegate = config
     body()
 
-    stage('convert'){
+    stage("${config.stageName}"){
         container("${config.containerName}") {
             sh "echo ${config.sourceDir} > /sourceDir"
             sh '''

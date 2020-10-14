@@ -6,7 +6,7 @@ def call(body){
 	body.delegate = config
     body()
 
-    stage('upload'){
+    stage("${config.stageName}"){
         container("${config.containerName}") {
             withCredentials([usernamePassword(
             credentialsId: "${config.credentialsId}", 
