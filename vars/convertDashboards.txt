@@ -1,10 +1,13 @@
-*hello* is a custom step which prints a message
+*convertDashboards* is a custom step which converts jsonnet dashboards
 
 Example:
 ```
 //Jenkinsfile
 node{
-	hello "Some text message";
-	hello("Some text message");
+	convertDashboards {
+        stageName = 'Convert Jsonnet'
+        containerName = 'grafonnet'
+        sourceDir = 'dashboards-jsonnet'
+    }
 }
 ```
