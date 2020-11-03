@@ -1,0 +1,13 @@
+*uploadTarball* is a custom step which uploads a tarball to a defined location
+
+Example:
+```
+//Jenkinsfile
+node{
+	uploadTarball {
+      stageName = 'Package tarball (Library)'
+      containerName = 'converter'
+      sourceDir = 'dashboards-jsonnet'  
+    }
+}
+```

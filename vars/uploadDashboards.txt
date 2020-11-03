@@ -1,0 +1,15 @@
+*uploadDashboards* is a custom step which uploads json dashboards to grafana
+
+Example:
+```
+//Jenkinsfile
+node{
+	uploadDashboards {
+        stageName = 'Upload to Grafana (Library)'
+        containerName = 'uploader'
+        credentialsId = 'grafana'
+        sourceDir = 'dashboards-jsonnet'
+        grafanaUrl = 'grafana:3000'
+    }
+}
+```
